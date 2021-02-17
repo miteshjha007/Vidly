@@ -141,8 +141,17 @@
     <Compile Include="Migrations\202102171627268_InitialModel1.designer.cs">
       <DependentUpon>202102171627268_InitialModel1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102171647327_InitialModel2.cs" />
+    <Compile Include="Migrations\202102171647327_InitialModel2.designer.cs">
+      <DependentUpon>202102171647327_InitialModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102171703480_addMembershipType.cs" />
+    <Compile Include="Migrations\202102171703480_addMembershipType.designer.cs">
+      <DependentUpon>202102171703480_addMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\VidlyDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,6 +180,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -213,6 +223,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102171627268_InitialModel1.resx">
       <DependentUpon>202102171627268_InitialModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102171647327_InitialModel2.resx">
+      <DependentUpon>202102171647327_InitialModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102171703480_addMembershipType.resx">
+      <DependentUpon>202102171703480_addMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

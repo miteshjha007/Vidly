@@ -1,0 +1,20 @@
+﻿#Migration Section
+for enabling migration you need to open NuGet Package Manager and
+type Enable-Migrations(it is must to have a DBContext class in your Model)
+
+public class MyDbContext : DbContext
+{
+    public MyDbContext()
+    {
+    }
+}
+Be sure you use
+
+using System.Data.Entity;
+
+Now,
+after any changes Give a Name For adding migration like: add-migration MigrationName
+
+For Update same migration use add-migration MigrationName -force
+
+Than use update-database for generating database
