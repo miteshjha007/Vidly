@@ -30,5 +30,5 @@ public partial class MigrationName : DbMigration
             Sql("INSERT INTO MembershipTypes(Id, SignUpFee, DuretionInMonths, DiscountRates)VALUES(3,90,3,15)");
             Sql("INSERT INTO MembershipTypes(Id, SignUpFee, DuretionInMonths, DiscountRates)VALUES(4,300,12,20)");
         }
-		use command:update-database in PMC(Package Manager COnsole)
+		use command:update-database in PMC(Package Manager Console)
 		
