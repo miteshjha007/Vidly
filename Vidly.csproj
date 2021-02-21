@@ -157,6 +157,14 @@
     <Compile Include="Migrations\202102181000028_ApplyAnnotaionToCustomerName.designer.cs">
       <DependentUpon>202102181000028_ApplyAnnotaionToCustomerName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102210756532_AddNameToMembershipType.cs" />
+    <Compile Include="Migrations\202102210756532_AddNameToMembershipType.designer.cs">
+      <DependentUpon>202102210756532_AddNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102210800324_setMembershipTypeName.cs" />
+    <Compile Include="Migrations\202102210800324_setMembershipTypeName.designer.cs">
+      <DependentUpon>202102210800324_setMembershipTypeName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -210,6 +218,7 @@
     <Content Include="Views\Home\Customers.cshtml" />
     <Content Include="Views\Customers\Customers.cshtml" />
     <Content Include="Views\Movie\Movies.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102181000028_ApplyAnnotaionToCustomerName.resx">
       <DependentUpon>202102181000028_ApplyAnnotaionToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102210756532_AddNameToMembershipType.resx">
+      <DependentUpon>202102210756532_AddNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102210800324_setMembershipTypeName.resx">
+      <DependentUpon>202102210800324_setMembershipTypeName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

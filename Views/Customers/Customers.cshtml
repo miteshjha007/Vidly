@@ -1,15 +1,35 @@
-﻿@model Vidly.ViewModels.RandomMovieViewModel
+﻿@model IEnumerable<Vidly.Models.Customers>
 @{
     ViewBag.Title = "Customers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Customers</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any customers yet.</p>
+}
+else
+{
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Membership Type</th>
+            <th>Discount Rate</th>
+        </tr>
+        
+    </thead>
 
-<ul>
-    @foreach (var customer in Model.Customers)
-    {
-        <li>@customer.Name</li>
-    }
-
-</ul>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { Id = customer.Id })</td>
+                <td>@customer.MembershipType.Name</td>
+                <td>@customer.MembershipType.DiscountRates%</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
