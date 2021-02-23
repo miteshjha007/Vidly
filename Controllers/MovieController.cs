@@ -5,12 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
-
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 
 namespace Vidly.Controllers
 {
     public class MovieController : Controller
     {
+        private VidlyDb _context;
+        public MovieController()
+        {
+            _context = new VidlyDb();
+        }
         // GET: Movie
         public ActionResult Index()
         {
@@ -48,5 +54,15 @@ namespace Vidly.Controllers
         //{                                                             //using attribute routing with applying constraints
         //    return Content(year + "/" + month);
         //}
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+                _context.Movies.Add(movie);
+            _context.SaveChanges();
+
+            return RedirectToAction("Movie", "Movie");
+
+        }
     }
 }
