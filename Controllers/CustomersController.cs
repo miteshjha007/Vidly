@@ -51,7 +51,7 @@ namespace Vidly.Controllers
             {
                 var customerInDb = _context.Customers.Single(c => c.Id == customers.Id);
                 customerInDb.Name = customers.Name;
-                customerInDb.Birthdate = customers.Birthdate;
+                customerInDb.Birthdate = customers.Birthdate;                               //Updating Customer
                 customerInDb.MembershipTypeId = customers.MembershipTypeId;
                 customerInDb.IsSubscribeToNewsletter = customers.IsSubscribeToNewsletter;
             }
