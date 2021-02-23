@@ -31,4 +31,63 @@ public partial class MigrationName : DbMigration
             Sql("INSERT INTO MembershipTypes(Id, SignUpFee, DuretionInMonths, DiscountRates)VALUES(4,300,12,20)");
         }
 		use command:update-database in PMC(Package Manager Console)
+
+#Implementing validation
+
+Adding Validation 
+
+Decorate properties of your model with data annotations. Then, in the controller:
+if	(!ModelState.IsValid)
+				return	View(…);	
+
+                And in the view:
+@Html.ValidationMessageFor(m	=>	m.Name)	
+
+Styling Validation Errors 
+In site.css:
+.input-validation-error	{
+				color:	red;
+}		
+.field-validation-error	{
+				border:	2px	solid	red;
+}	
+
+*Data Annotations*
+
+• [Required]
+• [StringLength(255)]
+• [Range(1, 10)]
+• [Compare(“OtherProperty”)]
+• [Phone]
+• [EmailAddress]
+• [Url]
+• [RegularExpression(“…”)]
+
+##<<Custom Validation>>
+
+public	class	Min18IfAMember	:	ValidationAttribute
+{
+					protected	override	ValidationResult	IsValid(object	value,	
+ValidationContext	validationContext)
+					{
+										…
+										if	(valid)	return	ValidationResult.Success;
+										else	return	new	ValidationResult(“error	message”);
+					}
+}	
 		
+        #Validation Summary 
+        @Html.ValidationSummary(true,	“Please	fix	the	following	errors”);	
+
+        ##Client-side Validation 
+@section	scripts	{	
+					@Scripts.Render(“~/bundles/jqueryval”)
+}		
+
+##Anti-forgery Tokens
+
+In the view:
+@Html.AntiForgeryToken()	
+In the controller:
+[ValidateAntiForgeryToken]
+public	ActionResult	Save()	{	}	
