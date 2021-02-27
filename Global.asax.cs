@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Http;
 using Vidly.Models;
 
 namespace Vidly
@@ -15,6 +16,7 @@ namespace Vidly
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             //Database.SetInitializer<VidlyDb>(new DropCreateDatabaseIfModelChanges<VidlyDb>());
             Database.SetInitializer<VidlyDb>(null);
             AreaRegistration.RegisterAllAreas();
