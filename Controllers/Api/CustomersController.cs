@@ -23,19 +23,20 @@ namespace Vidly.Controllers.Api
             return _context.Customers.ToList().Select(Mapper.Map<Customers , CustomerDto>); //Mapping Customer Obj to Customer Dto by using linq ext method(.select)
         }
         // Get/api/customers/1
-        public CustomerDto GetCustomers(int id)
+        public IHttpActionResult GetCustomers(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            return Mapper.Map<Customers, CustomerDto>(customer);
+                return NotFound();
+
+            return Ok(Mapper.Map<Customers, CustomerDto>(customer));
         }
         // POST /api/customers
         [HttpPost]
-        public CustomerDto CreateCustomer (CustomerDto customersDto)
+        public IHttpActionResult CreateCustomer (CustomerDto customersDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var customer = Mapper.Map<CustomerDto, Customers>(customersDto);
 
@@ -43,7 +44,7 @@ namespace Vidly.Controllers.Api
             _context.SaveChanges();
 
             customersDto.Id = customer.Id;
-            return customersDto;
+            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customersDto);
         }
         // PUT /api/customer/1
         [HttpPut]
