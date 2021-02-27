@@ -205,6 +205,10 @@
     <Compile Include="Migrations\202102241622324_populateMovie.designer.cs">
       <DependentUpon>202102241622324_populateMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102270448128_ChangeDataTypeOfGenre.cs" />
+    <Compile Include="Migrations\202102270448128_ChangeDataTypeOfGenre.designer.cs">
+      <DependentUpon>202102270448128_ChangeDataTypeOfGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -327,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102241622324_populateMovie.resx">
       <DependentUpon>202102241622324_populateMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102270448128_ChangeDataTypeOfGenre.resx">
+      <DependentUpon>202102270448128_ChangeDataTypeOfGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
