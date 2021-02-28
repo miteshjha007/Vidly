@@ -165,3 +165,43 @@ CreateMap<Movie,	MovieDto>()
 The same configuration should be applied to mapping of customers:
 CreateMap<Customer,	CustomerDto>()
 				.ForMember(c	=>	c.Id,	opt	=>	opt.Ignore());
+
+				##Client-side Development##
+#Calling an API Using jQuery 
+$.ajax({
+				url:	“…”,
+				method:	“…”,	//	DELETE,	POST,	PUT,	optional	for	GET
+				success:	function(result){
+								…
+				}
+});	
+*Bootbox
+bootbox.confirm(“Are	you	sure?”,	function(result){
+				if	(result)	{	
+				}
+});	
+
+*DataTables - Zero Configuration
+$(“#customers”).DataTable();	
+ 
+ *DataTables - Ajax Source
+$(“#customers”).DataTable({
+				ajax:	{
+								url:	“…”,
+								dataSrc:	“”
+				},
+				columns:	[
+									{	data:	“name”	},
+									{	
+											data:	“id”,
+											render:	function(data,	type,	row){
+															return	“…”;
+											}
+									}
+				]
+});	
+
+*DataTables - Removing Records
+var	table	=	$(“…”).DataTable(…);	
+var	$tr	=	$(“…”);
+table.rows(tr).remove().draw();	
