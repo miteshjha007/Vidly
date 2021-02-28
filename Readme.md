@@ -1,4 +1,4 @@
-#Migration Section
+# Migration Section
 for enabling migration you need to open NuGet Package Manager and
 type Enable-Migrations(it is must to have a DBContext class in your Model)
 
