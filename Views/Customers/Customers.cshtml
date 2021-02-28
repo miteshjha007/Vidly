@@ -41,18 +41,20 @@ else
 {
     <script>
         $(document).ready(function () {
-            
+
             $("#customers .js-delete").on("click", function () {
                 var buttons = $(this);
-                if (confirm("Are you sure want to delete this customer")) {
-                    $.ajax({
-                        url: "/api/customers/" + buttons.attr("data-customer-id"),
-                        method: "DELETE",
-                        success: function () {
-                            buttons.parents("tr").remove();
-                        }
-                    })
-                }
+                bootbox.confirm("Are you sure want to delete this customer?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/customers/" + buttons.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function () {
+                                buttons.parents("tr").remove();
+                            }
+                        });
+                    }
+                });
             });
         });
     </script>
