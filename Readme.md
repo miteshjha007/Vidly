@@ -32,7 +32,7 @@ public partial class MigrationName : DbMigration
         }
 		use command:update-database in PMC(Package Manager Console)
 
-#Implementing validation
+# Implementing validation
 
 Adding Validation 
 
@@ -63,7 +63,7 @@ In site.css:
 • [Url]
 • [RegularExpression(“…”)]
 
-##<<Custom Validation>>
+# Custom Validation
 
 public	class	Min18IfAMember	:	ValidationAttribute
 {
@@ -84,7 +84,7 @@ ValidationContext	validationContext)
 					@Scripts.Render(“~/bundles/jqueryval”)
 }		
 
-##Anti-forgery Tokens
+# Anti-forgery Tokens
 
 In the view:
 @Html.AntiForgeryToken()	
@@ -93,8 +93,9 @@ In the controller:
 public	ActionResult	Save()	{	}	
 
 
-#Building Web APIs:
-**RESTful Convention 
+# Building Web APIs:
+*RESTful Convention*
+ 
 Request Description
 GET /api/customers Get all customers
 GET /api/customers/1 Get customer with ID 1
@@ -102,7 +103,7 @@ POST /api/customers Add a new customer (customer data in the request body)
 PUT /api/customers/1 Update customer with ID 1 (customer data in the request body)
 DELETE /api/customers/1 Delete customer with ID 1
 
-*Building an API 
+*Building an API* 
 
 public	IHttpActionResult	GetCustomers()	{}	
 
@@ -120,7 +121,7 @@ public	IHttpActionResult	DeleteCustomer(int	id)	{}
 • Created()
 • Unauthorized()
 
-##AutoMapper
+# AutoMapper
 Create a mapping profile first:
 public	class	MappingProfile	:	Profile	
 {
@@ -140,7 +141,7 @@ var	customerDto	=	Mapper.Map<Customer,	CustomerDto>(customer);
 Or to map to an existing object:
 Mapper.Map(customer,	customerDto);	
 
-##Enabling camel casing
+# Enabling camel casing
 In WebApiConfig:
 public	static	void	Register(HttpConfiguration	config)
 {
@@ -167,7 +168,7 @@ CreateMap<Customer,	CustomerDto>()
 				.ForMember(c	=>	c.Id,	opt	=>	opt.Ignore());
 
 				##Client-side Development##
-#Calling an API Using jQuery 
+# Calling an API Using jQuery 
 $.ajax({
 				url:	“…”,
 				method:	“…”,	//	DELETE,	POST,	PUT,	optional	for	GET
@@ -175,16 +176,17 @@ $.ajax({
 								…
 				}
 });	
-*Bootbox
+*Bootbox*
+
 bootbox.confirm(“Are	you	sure?”,	function(result){
 				if	(result)	{	
 				}
 });	
 
-*DataTables - Zero Configuration
+*DataTables* - Zero Configuration
 $(“#customers”).DataTable();	
  
- *DataTables - Ajax Source
+ *DataTables* - Ajax Source
 $(“#customers”).DataTable({
 				ajax:	{
 								url:	“…”,
@@ -201,7 +203,7 @@ $(“#customers”).DataTable({
 				]
 });	
 
-*DataTables - Removing Records
+*DataTables* - Removing Records
 var	table	=	$(“…”).DataTable(…);	
 var	$tr	=	$(“…”);
 table.rows(tr).remove().draw();	
