@@ -222,6 +222,14 @@
     <Compile Include="Migrations\202103051651016_PopulateGenre.designer.cs">
       <DependentUpon>202103051651016_PopulateGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103081506007_seedUsers.cs" />
+    <Compile Include="Migrations\202103081506007_seedUsers.designer.cs">
+      <DependentUpon>202103081506007_seedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103081542408_AddDrivingLicense.cs" />
+    <Compile Include="Migrations\202103081542408_AddDrivingLicense.designer.cs">
+      <DependentUpon>202103081542408_AddDrivingLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -231,6 +239,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Validators\CustomersValidator.cs" />
     <Compile Include="Models\VidlyDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1207,6 +1216,7 @@
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Movie\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1237,6 +1247,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103051651016_PopulateGenre.resx">
       <DependentUpon>202103051651016_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103081506007_seedUsers.resx">
+      <DependentUpon>202103081506007_seedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103081542408_AddDrivingLicense.resx">
+      <DependentUpon>202103081542408_AddDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

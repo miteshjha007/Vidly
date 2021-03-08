@@ -10,6 +10,7 @@ namespace Vidly
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new ValidateModelFilter());
+            filters.Add(new AuthorizeAttribute());
         }
     }
 }
