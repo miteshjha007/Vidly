@@ -8,6 +8,7 @@ using Vidly.Models;
 
 namespace Vidly.Controllers
 {
+    [AllowAnonymous] //Allow Controller or Action to access without Login
     public class HomeController : Controller
     {
         public ActionResult Index()
