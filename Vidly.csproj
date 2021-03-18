@@ -127,6 +127,7 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -209,6 +210,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -217,6 +219,7 @@
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
+    <Compile Include="Dtos\NewRentalDto.cs" />
     <Compile Include="Filters\ValidateModelFilter.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,6 +249,14 @@
     <Compile Include="Migrations\202103081542408_AddDrivingLicense.designer.cs">
       <DependentUpon>202103081542408_AddDrivingLicense.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103181730309_AddRental.cs" />
+    <Compile Include="Migrations\202103181730309_AddRental.designer.cs">
+      <DependentUpon>202103181730309_AddRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103181748251_ModifyNumberInStock.cs" />
+    <Compile Include="Migrations\202103181748251_ModifyNumberInStock.designer.cs">
+      <DependentUpon>202103181748251_ModifyNumberInStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -255,6 +266,7 @@
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Validators\CustomersValidator.cs" />
     <Compile Include="Models\VidlyDb.cs" />
@@ -1237,6 +1249,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\NewRentals\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1269,6 +1282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103081542408_AddDrivingLicense.resx">
       <DependentUpon>202103081542408_AddDrivingLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103181730309_AddRental.resx">
+      <DependentUpon>202103181730309_AddRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103181748251_ModifyNumberInStock.resx">
+      <DependentUpon>202103181748251_ModifyNumberInStock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

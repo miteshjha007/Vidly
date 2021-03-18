@@ -207,3 +207,86 @@ $(“#customers”).DataTable({
 var	table	=	$(“…”).DataTable(…);	
 var	$tr	=	$(“…”);
 table.rows(tr).remove().draw();	
+
+# Data Caching 
+
+*Use Data Caching with Expensive Queries*
+
+In the demo, I stored the list of genres in the cache. Getting the list of genres would
+issue a “SELECT * FROM Genres” query to the database, and given that this is a
+simple and fast query, caching the result would just waste server’s resources.
+Use data caching for complex queries over large tables that take several seconds to
+execute. This way, you can argue that using additional memory on the server can be
+better (but not necessarily) than querying your database several times. You need to
+profile before and after your optimization to ensure your assumptions are correct and
+are not based on some theory you read in a book or tutorial.
+
+MemoryCache.Add() 
+
+If you want to have more control over the objects you put in their cache, it’s better to use
+the Add method of MemoryCache class.
+
+MemoryCache.Default.Add(
+				new	CacheItem(“Key”,value),	
+				cacheItemPolicy);
+
+As you see, the second argument to this method is a cacheItemPolicy object. With this
+object you can set the expiration date/time (both absolute and sliding) and you can also
+register callbacks to be called when the item is removed from the cache.
+
+# Performance Optimization
+
+*Rules of thumb* 
+• Do not sacrifice the maintainability of your code to premature optimization.
+• Be realistic and think like an “engineer”.
+• Be pragmatic and ensure your efforts have observable results and give value.
+And remember: premature optimization is the root of all evils.
+
+*Database tier*
+
+Schema
+Every table must have a primary key.
+• Tables should have relationships.
+• Put indexes on columns where you filter records on. But remember: too many
+indexes can have an adverse impact on the performance.
+• Avoid Entity-Attribute-Value (EAV) pattern.
+
+Queries
+Keep an eye on EF queries using Glimpse. If a query is slow, use a stored
+procedure.
+• Use Execution Plan in SQL Server to find performance bottlenecks in your
+queries.
+
+If after all your optimizations, you still have slow queries, consider creating a
+denormalised “read” database for your queries. But remember, this comes with the cost
+of maintaining two databases in sync. A simpler approach is to use caching.
+
+*Application tier*
+
+On pages where you have costly queries on data that doesn’t change frequently,
+use OutputCache to cache the rendered HTML.
+• You can also store the results of the query in cache (using MemoryCache), but
+use this approach only in actions that are used for displaying data, not modifying
+it.
+• Async does not improve performance. It improves scalability given that you’re
+not using a single instance of SQL Server on the back-end. You should be using
+a SQL cluster, or a NoSQL database (eg MongoDB, RavenDB, etc) or SQL
+Azure.
+• Disable session in web.config.
+• Use release builds in production.
+
+Client Tier 
+
+• Put JS and CSS files in bundles. 
+• Put the script bundles near the end of the <body> element. Modernizr is an
+exception. It needs to be in the head.
+• Return small, lightweight DTOs from your APIs.
+• Render HTML markup on the client. That’s the case with single page
+applications (SPA).
+• Compress images.
+• Use image sprites. This is beyond the scope of the course and you need to read
+about them yourself.
+• Reduce the data you store in cookies because they’re sent back and forth with
+every request.
+• Use content delivery networks (CDN). Again, beyond the scope of the course.
+Implementations vary depending on where you host your application. 
