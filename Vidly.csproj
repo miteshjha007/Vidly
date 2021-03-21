@@ -1131,6 +1131,7 @@
     <Content Include="packages\System.ComponentModel.Annotations.4.4.1\System.ComponentModel.Annotations.4.4.1.nupkg" />
     <Content Include="packages\WebGrease.1.6.0\.signature.p7s" />
     <Content Include="packages\WebGrease.1.6.0\WebGrease.1.6.0.nupkg" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
