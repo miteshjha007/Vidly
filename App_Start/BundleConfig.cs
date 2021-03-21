@@ -14,6 +14,7 @@ namespace Vidly
                          "~/Scripts/bootbox.js",
                          "~/Scripts/respond.js",
                          "~/Scripts/bootstrap.js",
+                         "~/Scripts/toastr.js",
                          "~/scripts/datatables/jquery.datatables.js",
                          "~/scripts/datatables/datatables.bootstrap.js",
                          "~/scripts/typeahead.bundle.js"
@@ -30,6 +31,7 @@ namespace Vidly
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Typeahead.css",
+                      "~/Content/toastr.css",
                       "~/content/datatables/css/datatables.bootstrap.css",
                       "~/Content/site.css"));
         }
