@@ -19,10 +19,15 @@ namespace Vidly.Controllers.Api
             _context = new VidlyDb(); 
         }
         // Get/api/customers
-        public IHttpActionResult GetCustomers()
+        public IHttpActionResult GetCustomers(string query = null)
         {
+            var customersQuery = _context.Customers
+                .Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
             var customerDtos = _context.Customers
-                .Include(c => c.MembershipType)
                 .ToList()
                 .Select(Mapper.Map<Customers , CustomerDto>); //Mapping Customer Obj to Customer Dto by using linq ext method(.select)
             return Ok(customerDtos);
