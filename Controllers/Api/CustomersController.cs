@@ -27,13 +27,13 @@ namespace Vidly.Controllers.Api
             if (!String.IsNullOrWhiteSpace(query))
                 customersQuery = customersQuery.Where(c => c.Name.Contains(query));
 
-            var customerDtos = _context.Customers
+            var customerDtos = customersQuery
                 .ToList()
                 .Select(Mapper.Map<Customers , CustomerDto>); //Mapping Customer Obj to Customer Dto by using linq ext method(.select)
             return Ok(customerDtos);
         }
         // Get/api/customers/1
-        public IHttpActionResult GetCustomers(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)

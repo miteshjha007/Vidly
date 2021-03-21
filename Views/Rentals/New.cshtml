@@ -6,23 +6,36 @@
 <h2>New Rental Form</h2>
 
 
-<form>
+<form id="newRental">
     <div class="form-group">
         <label>Customer</label>
-        <input id="customer" type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="customer" name="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control" />
+
+        </div>
     </div>
     <div class="form-group">
         <label>Movie</label>
-        <input id="movie" type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="movie" name="movie" data-rule-atLeastOneMovie="true" type="text" value="" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="movies" class="list-gruop"></ul>
+        </div>
     </div>
 
     <button class="btn btn-primary">Submit</button>
 </form>
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
-            var vm = {};
+            var vm = {
+                movieIds: []
+            };
             var customers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -54,7 +67,7 @@
             $('#movie').typeahead({
                 minLength: 3,
                 highlight: true
-            },{
+            }, {
                 name: 'movies',
                 display: 'name',
                 source: movies
@@ -63,19 +76,42 @@
                 $("#movie").typeahead("val", "");
                 vm.movieIds.push(movie.id);
             });
-            $("#newRental").submit(function (e) {
-                 e.preventDefault();
-                $.ajax({
-                    url: "/api/newRentals",
-                    method: "post",
-                    data: vm
-                })
-                .done(function () {
-                    console.log("done");
-                })
-                .fail(function () {
-                });
+            $.validator.addMethod("atLeastOneMovie", function () {
+                return vm.movieIds.length > 0;
+            }, "Please select a valid movie.");
+
+            $.validator.addMethod("validCustomer", function () {
+                return vm.customerId && vm.customerId != 0;
+            }, "Please select a valid customer.");
+
+            var validator = $("#newRental").validate({
+                submitHandler: function () {
+                    // e.preventDefault();
+                    $.ajax({
+                        url: "/api/newRentals",
+                        method: "post",
+                        data: vm
+                    })
+                        .done(function () {
+                            toastr.success("Rentals successfully recorded.");
+                            $("#customer").typeahead("val", "");
+                            $("#movie").typeahead("val", "");
+                            $("#movies").empty();
+
+                            vm = { movieIds: [] };
+                            validator.resetForm();
+                        })
+                        .fail(function () {
+                            toastr.error("Something unexpected happened.");
+
+                        });
+                    return false;
+                }
             });
+
+            //$("#newRental").submit(function (e) {
+
+            //});
         })
     </script>
 }
